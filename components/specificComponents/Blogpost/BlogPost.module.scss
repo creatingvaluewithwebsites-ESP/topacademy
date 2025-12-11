@@ -1,0 +1,98 @@
+@import "../../../styles/font-mixins.scss";
+@import "../../../styles/colors.scss";
+
+.blog-page {
+  &__main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  &__article {
+    grid-column: 1;
+  }
+
+  &__sidebar {
+    grid-column: 1;
+    margin-top: 40px;
+  }
+}
+
+// Estilos del texto
+.meta-info {
+  margin: 20px 0;
+  color: $color-grey-normal;
+  font-weight: bold;
+}
+
+.rich-text-section {
+  @include text-font($color-grey-normal);
+  line-height: 1.8;
+  
+  &__rich-text {
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    
+    h2 {
+      @include title-font;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+// Estilos de la tarjeta "Viaje Relacionado"
+.related-trip-card {
+  background-color: $color-blue-very-light; // Usando tus variables
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid $color-blue-normal;
+
+  h3 {
+    @include small-title-font($color-grey-normal);
+    margin-bottom: 10px;
+  }
+
+  .btn-book {
+    display: inline-block;
+    background-color: $color-red-normal;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    border: none;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// RESPONSIVE: En pantallas grandes, ponemos el sidebar a la derecha
+@media only screen and (min-width: 1000px) {
+  .blog-page {
+    &__main-content {
+      grid-template-columns: 2fr 1fr; // 2 partes texto, 1 parte sidebar
+      padding: 50px;
+    }
+
+    &__sidebar {
+      margin-top: 0;
+      position: sticky;
+      top: 100px; // Se queda fijo al hacer scroll
+      height: fit-content;
+    }
+  }
+}
