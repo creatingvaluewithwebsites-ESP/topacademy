@@ -5,7 +5,6 @@ import { storyblokInit, apiPlugin } from "@storyblok/react";
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-
 import Person from "../components/specificComponents/Person/Person";
 import Teacher from "../components/specificComponents/Teacher/Teacher";
 import Experience from '../components/specificComponents/Experience/Experience';
@@ -28,6 +27,8 @@ import Location from '../components/specificComponents/Location/Location';
 import Artist from '../components/specificComponents/Artist/Artist';
 import Song from '../components/specificComponents/Song/Song';
 import BlogPost from '../components/specificComponents/Blogpost/BlogPost';
+import BlogPostsList from "../components/specificComponents/BlogPostsList/BlogPostsList";
+
 
 
 const components = {
@@ -51,11 +52,13 @@ const components = {
   location: Location,
   artist: Artist,
   song: Song,
-  blogpost: BlogPost
+  blogpost: BlogPost,
+  blogpostslist: BlogPostsList,
 };
 
 storyblokInit({
-  accessToken: `${process.env.STORYBLOK_API_KEY}`,
+  //accessToken: `${process.env.STORYBLOK_API_KEY}`,
+  accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_KEY,
   use: [apiPlugin],
   components,
 });

@@ -12,7 +12,6 @@ export default class Headermenu extends Component {
 			showSearchFlyout: false,
 			expandedNavDropdownOpened: false
 		};
-
 	}
 
 	toggleNavSideMenu(setPreventDefault, e) {
@@ -43,8 +42,10 @@ export default class Headermenu extends Component {
 					<li className={css["main-header__expanded-nav-item--home"]} key="mainlogo">
 						<a href="/">
 							<div className={css["main-header__nav-home-container"]}>
-								<img src="/images/logo/logowithtext.svg" alt="logo" className={css["main-header__nav-home-logo"]} />
-								<img src="/images/logo/logo.svg" alt="logo" className={css["main-header__nav-home-logo--mobile"]} />
+								<img src="/images/logo/logo-top-travel.png" alt="logo" className={css["main-header__nav-home-logo--mobile"]} />
+								<span className={css["main-header__nav-home-textlogo--expanded-nav"]}>
+    								Top Travel
+  								</span>
 							</div>
 						</a>
 					</li>
@@ -83,8 +84,10 @@ export default class Headermenu extends Component {
 						<nav className={css["main-header__nav-home"]}>
 							<a href="/">
 								<div className={css["main-header__nav-home-container"]}>
-									<img src="/images/logo/logowithtext.svg" alt="logo" className={css["main-header__nav-home-logo"]} />
-									<img src="/images/logo/logo.svg" alt="logo" className={css["main-header__nav-home-logo--mobile"]} />
+									<img src="/images/logo/logo-top-travel.png" alt="Top Travel" className={css["main-header__nav-home-logo--mobile"]} />
+									<span className={css["main-header__nav-home-textlogo"]}>
+    									Top Travel
+  									</span>
 								</div>
 							</a>
 						</nav>

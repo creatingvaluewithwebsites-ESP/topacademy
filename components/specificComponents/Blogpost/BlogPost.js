@@ -51,17 +51,19 @@ export default class BlogPost extends Component {
                         <aside className={css["blog-page__sidebar"]}>
                             {relatedTrip && (
                                 <div className={css["related-trip-card"]}>
-                                    <h3>¿Te ha gustado la historia?</h3>
-                                    <p>Vive la experiencia tú mismo.</p>
+                                    <h3>Did you enjoy the story?</h3>
+                                    <p>Live the experience yourself.</p>
                                     
                                     {/* Si relatedTrip es un objeto completo (si está resuelto) */}
-                                    {typeof relatedTrip === 'object' ? (
+                                    {relatedTrip?.content ? (
+
                                         <div className={css["trip-preview"]}>
                                             {/* Aquí podrías poner la foto del viaje si viene en los datos */}
-                                            <h4>{relatedTrip.name || "Ir al viaje"}</h4>
-                                            <a href={`/${relatedTrip.slug}`} className={css["btn-book"]}>
-                                                Ver Viaje
-                                            </a>
+                                            <h4>{relatedTrip.name || "Go to the trip"}</h4>
+                                            <Link href={`/${relatedTrip.full_slug || relatedTrip.slug}`}>
+                                                <a className={css["btn-book"]}>Explore trip</a>
+                                            </Link>
+
                                         </div>
                                     ) : (
                                         // Si solo llega el ID (caso común sin resolver)

@@ -2,6 +2,9 @@ import { useStoryblokState, getStoryblokApi, StoryblokComponent } from "@storybl
 import HeadComponent from "../components/technicalComponents/HeadComponent/HeadComponent";
 import { getTags } from "../functions/services/metaTagService";
 
+import StoryblokClient from "storyblok-js-client";
+
+
 export default function Page({ story, preview, socialtags, menu }) {
   story = useStoryblokState(story, { //Hook that connects the current page to the Storyblok Real Time visual editor. Needs information about the relations in order for the relations to be editable as well.
     resolveRelations: [
@@ -17,7 +20,9 @@ export default function Page({ story, preview, socialtags, menu }) {
       "song.artist",
       "course.teachers",
       "course.products",
-      "list.elements"
+      "list.elements",
+      "blogpost.related_trip",
+      "course.locations"
     ]
   }, preview);
 
@@ -48,11 +53,19 @@ export async function getStaticProps({ params }) {
       "song.artist",
       "course.teachers",
       "course.products",
-      "list.elements"
+      "list.elements",
+      "blogpost.related_trip",
+      "course.locations",
     ]
   };
 
-  const storyblokApi = getStoryblokApi();
+  //const storyblokApi = getStoryblokApi();
+  const storyblokApi = new StoryblokClient({
+    accessToken: process.env.STORYBLOK_API_KEY,
+    version: "draft",
+    resolve_relations: "hero.colorcode,leftrightblock.colorcode,course.colorcode,blogpost.related_trip",
+  });
+
 
   let { data } = await storyblokApi.get(`cdn/stories/${slug}`, sbParams);
   if (!data) {
@@ -93,7 +106,11 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const storyblokApi = getStoryblokApi();
+  //const storyblokApi = getStoryblokApi();
+  const storyblokApi = new StoryblokClient({
+    accessToken: process.env.STORYBLOK_API_KEY,
+  });
+
 
   let { data } = await storyblokApi.get("cdn/links/");
 
