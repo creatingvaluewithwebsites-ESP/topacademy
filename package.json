@@ -29,6 +29,7 @@
     "react-lottie-player": "^1.4.3",
     "react-player": "^2.10.1",
     "react-scroll": "^1.8.7",
+    "storyblok-js-client": "^7.2.1",
     "storyblok-rich-text-react-renderer": "^2.6.0",
     "typewriter-effect": "^2.19.0"
   },
