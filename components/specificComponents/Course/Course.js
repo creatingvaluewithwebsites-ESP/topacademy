@@ -39,7 +39,7 @@ export default class Course extends Component {
 						</div>
 						<div className={css["course-page__short-description"]}>
   							<section className={css["rich-text-section--with-navigator"]}>
-    							<h2 className={css["rich-text-section__title"]}>Locations</h2>
+    							<h2 className={css["rich-text-section__title"]}>Accomodation</h2>
 
 
     							{this.props.blok.locations && this.props.blok.locations.map((location) => (

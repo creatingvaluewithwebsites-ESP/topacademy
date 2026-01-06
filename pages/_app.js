@@ -53,7 +53,7 @@ const components = {
   artist: Artist,
   song: Song,
   blogpost: BlogPost,
-  blogpostslist: BlogPostsList,
+  blogpostslist: BlogPostsList, // New
 };
 
 storyblokInit({

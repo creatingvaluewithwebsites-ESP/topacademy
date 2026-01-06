@@ -1,123 +1,96 @@
-
 @import "../../../styles/colors.scss";
 @import "../../../styles/font-mixins.scss";
 
-.wrapper {
-  max-width: 800px;
-  margin: auto;
+// 1. El envoltorio del Link (quitamos estilos de enlace feos)
+.location-card-wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%; // Para que todas las tarjetas midan lo mismo
 }
 
-.content {
-  display: grid;
-  column-gap: 20px;
-  row-gap: 20px;
-  @include text-font($color-grey-normal);
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px 1fr auto;
-  grid-template-areas:
-    "head"
-    "side"
-    "main"
-    "foot";
-
-  h1 {
-    @include small-title-font($color-grey-normal);
-  }
-
-  img {
-    max-width: 300px;
-  }
-}
-
-@media only screen and (min-width: 1000px) {
-  .content {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas:
-      "head head head"
-      "side main main"
-      "foot foot foot";
-
-    h1 {
-      font-size: 36px;
-    }
-  }
-}
-
-.box {
-  background-color: $color-blue-very-light;
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.head {
-  grid-area: head;
-  text-align: center;
-  background-color: $color-blue-normal; // puedes cambiarlo
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  h1 {
-    @include small-title-font(white);
-  }
-}
-
-.sidebar {
-  grid-area: side;
+// 2. La Tarjeta en sí
+.location-card {
+  background-color: white;
+  border: 1px solid #eaeaea; // Borde muy suave
+  border-radius: 12px;       // Bordes redondeados modernos
+  overflow: hidden;          // Para que la foto no se salga
+  transition: all 0.3s ease; // Animación suave para todo
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
+  cursor: pointer;
 
-.locationimage {
-  grid-area: side;
-
-  img {
-    max-width: 220px;
-    border-radius: 20px;
-  }
-}
-
-.locationdetailitem {
-  font-size: 16px; // ojo: en tu person tenías 16x (typo)
-  font-weight: 700;
-  padding: 5px 10px;
-}
-
-/* Sección principal: descripción / info */
-.details {
-  grid-area: main;
-}
-
-/* Opcional: para listar amenities o características */
-.amenities {
-  margin-top: 10px;
-
-  ul {
-    margin: 0;
-    padding-left: 18px;
-  }
-
-  li {
-    margin-bottom: 6px;
-  }
-}
-
-/* Footer: link / botón / precio */
-.foot {
-  grid-area: foot;
-}
-
-/* Opcional: estilo para link */
-.link {
-  display: inline-block;
-  margin-top: 10px;
-  font-weight: 700;
-  color: $color-blue-normal;
-
+  // Efecto Hover: Sombra y subida ligera
   &:hover {
-    color: $color-blue-normal;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: $color-blue-light; // Se ilumina el borde (si tienes esta variable)
+  }
+
+  // 3. Contenedor de la Imagen (Ratio fijo)
+  &__image-container {
+    width: 100%;
+    height: 220px; // Altura fija para que todas sean iguales
+    position: relative;
+    background-color: #f4f4f4;
+    overflow: hidden;
+  }
+
+  // 4. La Imagen
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Clave: Recorta la foto para llenar el hueco sin deformar
+    transition: transform 0.5s ease;
+  }
+
+  // Zoom suave en la foto al pasar el ratón
+  &:hover &__image {
+    transform: scale(1.05);
+  }
+
+  // 5. Contenido (Texto)
+  &__content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1; // Empuja el contenido para llenar espacio si sobra
+  }
+
+  &__title {
+    margin: 0;
+    // Si tienes mixins úsalos, si no, usa fuente directa:
+    // @include small-title-font($color-grey-normal);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.2;
+  }
+
+  &__meta {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__desc {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+    
+    // Truco CSS para cortar texto largo en 3 líneas con "..."
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
-

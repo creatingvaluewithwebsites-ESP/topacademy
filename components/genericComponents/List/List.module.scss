@@ -1,6 +1,9 @@
 ﻿@import "../../../styles/colors.scss";
 @import "../../../styles/font-mixins.scss";
 
+/* =========================================
+   TU CÓDIGO ORIGINAL (Para Guías y Listas normales)
+   ========================================= */
 
 .rich-text-section {
   margin: 35px 17px 50px 18px;
@@ -11,11 +14,9 @@
 
   &__title {
     margin-bottom: 20px;
-    @include title-font;
+    @include title-font; // Asegúrate de que este mixin existe, si no usa font-size: 2rem;
   }
 }
-
-
 
 @media only screen and (min-width: 500px) {
   .rich-text-section {
@@ -29,8 +30,6 @@
     }
   }
 }
-
-
 
 @media only screen and (min-width: 800px) {
   .rich-text-section {
@@ -48,16 +47,12 @@
   }
 }
 
-
-
 @media only screen and (min-width: 850px) {
   .rich-text-section {
     width: 780px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 70px;
-    
-   
 
     &__title {
       margin-bottom: 30px;
@@ -65,15 +60,11 @@
   }
 }
 
-
-
 @media only screen and (min-width: 1250px) {
   .rich-text-section {
     width: 1030px;
     margin-top: 70px;
     margin-bottom: 90px;
-
-    
 
     &--smaller {
       width: 820px;
@@ -83,13 +74,19 @@
   }
 }
 
-
-
 @media only screen and (min-width: 1400px) {
   .rich-text-section {
     width: 1180px;
 
-  
+    &--smaller {
+      width: 820px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .rich-text-section {
+    width: 1300px;
 
     &--smaller {
       width: 820px;
@@ -98,15 +95,39 @@
 }
 
 
+/* =========================================
+   LA EXCEPCIÓN (Solo para Alojamientos)
+   ========================================= */
 
-@media only screen and (min-width: 1600px) {
-  .rich-text-section {
-    width: 1300px;
+.location-grid {
+  // Usamos los mismos márgenes que tu sección original para que quede alineado
+  margin: 35px 17px 50px 18px; 
+  
+  // Pero aplicamos Grid
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 
-   
-
-    &--smaller {
-      width: 820px;
-    }
+  @media only screen and (min-width: 850px) {
+    width: 780px;
+    margin-left: auto;
+    margin-right: auto;
   }
+  
+  @media only screen and (min-width: 1250px) {
+    width: 1030px;
+  }
+  
+  @media only screen and (min-width: 1400px) {
+    width: 1180px;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    width: 1300px;
+  }
+}
+
+// Clase vacía por si necesitas ajustar la tarjeta individualmente
+.location-card-wrapper {
+  height: 100%;
 }
