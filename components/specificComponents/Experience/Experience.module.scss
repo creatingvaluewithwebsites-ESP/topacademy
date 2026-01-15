@@ -1,25 +1,47 @@
 ﻿@import "../../../styles/colors.scss";
 @import "../../../styles/font-mixins.scss";
 
-
-.experienceitem {
-  margin: 40px 0;
-
+.experience-wrapper {
+  margin: 30px 0;
+  width: 100%;
 }
 
-.experienceheader {
-  margin-bottom: 10px;
+.experience-card {
+  /* Diseño de Tarjeta */
+  background-color: #ffffff; /* Fondo blanco limpio */
+  border-left: 5px solid #00234B; /* Borde lateral AZUL (el color de tus títulos) */
+  border-radius: 0 8px 8px 0; /* Bordes redondeados solo a la derecha */
+  padding: 25px 30px; /* Espacio interior generoso */
+  
+  /* Sombra suave para darle profundidad */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  
+  /* Transición por si quieres animarlo luego */
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px); /* Pequeño efecto al pasar el ratón */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
 }
 
-.experiencedate {
-  background-color: $color-green-light;
-  font-size: 16x;
-  border-radius: 20px;
-  padding: 5px 10px;
-  margin-right: 20px;
-  @include small-text-font($color-red-normal);
+.experience-content {
+  /* TIPOGRAFÍA: Forzamos la misma familia que el resto de la web */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  font-size: 1.05rem; /* Un pelín más grande para facilitar lectura */
+  line-height: 1.7;   /* Buen espaciado entre líneas */
+  color: #374151;     /* Gris oscuro (no negro puro) para elegancia */
+  
+  /* Respetar saltos de línea */
+  white-space: pre-wrap;
+  
 }
 
-.experiencetitle {
-  @include very-small-title-font($color-red-normal);
+/* RESPONSIVE: Ajustes para móvil */
+@media (max-width: 600px) {
+  .experience-card {
+    padding: 20px;
+    border-left-width: 4px;
+  }
 }
