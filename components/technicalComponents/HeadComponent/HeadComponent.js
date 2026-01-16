@@ -62,12 +62,16 @@ export default class HeadComponent extends Component {
 				{this.state.loaded && <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@3.9.97/css/materialdesignicons.min.css" />}
 				{this.state.loaded && <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />}
 			</Head>
-			<Script id="tawktoscriptwrapper" dangerouslySetInnerHTML={{
-				__html: `var Tawk_API=Tawk_API||{ }, Tawk_LoadStart=new Date();
+			<Script 
+				id="tawktoscriptwrapper"
+				strategy="afterInteractive" 
+				dangerouslySetInnerHTML={{
+					__html: `var Tawk_API=Tawk_API||{ }, Tawk_LoadStart=new Date();
 					(function(){
-					var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+						var s1=document.createElement("script"),
+						s0=document.getElementsByTagName("script")[0];
 					s1.async=true;
-					s1.src='https://tawk.to/chat/696a0aebef4ece197e15ebd6/1jf33la00';
+					s1.src='https://embed.tawk.to/696a0aebef4ece197e15ebd6/1jf34m2n3';
 					s1.charset='UTF-8';
 					s1.setAttribute('crossOrigin','*');
 					s0.parentNode.insertBefore(s1,s0);})();`,
